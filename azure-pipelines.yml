@@ -15,7 +15,9 @@ steps:
 
 - script: |
     ls
+    echo cd bsnes && ls
     cd bsnes && ls
+    echo cd out && ls
     cd out && ls
     #zip
   displayName: 'Create archive'
