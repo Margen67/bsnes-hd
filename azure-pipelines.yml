@@ -14,6 +14,8 @@ steps:
   displayName: 'Build'
 
 - script: |
-    dir & ls
-    zip
+    ls
+    cd bsnes && ls
+    cd out && ls
+    #zip
   displayName: 'Create archive'
