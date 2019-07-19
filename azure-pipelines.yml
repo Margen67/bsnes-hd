@@ -8,15 +8,7 @@ steps:
 - script: make -j$(nproc --all) -C bsnes
   displayName: 'Build'
 
-- script: |
-    ls
-    echo cd bsnes && ls (start)
-    cd bsnes && ls
-    echo cd bsnes && ls (end)
-    echo cd out && ls (start)
-    cd out && ls
-    echo cd out && ls (end)
-    zip bsnes-hd.zip bsnes/out/bsnes.app ../../LICENSE ../../README.md
+- script: zip bsnes-hd.zip bsnes/out/bsnes.app ../../LICENSE ../../README.md
   displayName: 'Create archive'
 
 - publish: $(System.DefaultWorkingDirectory)/bin/WebApp
