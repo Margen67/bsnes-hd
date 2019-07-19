@@ -10,9 +10,15 @@ steps:
 
 - script: |
     ls
-    echo cd bsnes && ls
+    echo cd bsnes && ls (start)
     cd bsnes && ls
-    echo cd out && ls
+    echo cd bsnes && ls (end)
+    echo cd out && ls (start)
     cd out && ls
-    #zip
+    echo cd out && ls (end)
+    zip bsnes-hd.zip bsnes/out/bsnes.app ../../LICENSE ../../README.md
   displayName: 'Create archive'
+
+steps:
+- publish: $(System.DefaultWorkingDirectory)/bin/WebApp
+  artifact: bsnes-hd_macos
