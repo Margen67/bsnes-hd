@@ -1,0 +1,25 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'macOS-10.14'
+
+steps:
+- script: |
+    export HOMEBREW_NO_ANALYTICS=1
+    brew update
+    brew install build-essential libgtk2.0-dev libpulse-dev mesa-common-dev libgtksourceview2.0-dev libcairo2-dev libsdl2-dev libxv-dev libao-dev libopenal-dev libudev-dev
+  displayName: 'Install packages'
+
+- script: make -j$(nproc --all) -C bsnes
+  displayName: 'Build'
+
+- script: |
+    dir & ls
+    zip
+  displayName: 'Create archive'
